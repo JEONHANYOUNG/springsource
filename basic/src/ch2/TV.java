@@ -2,12 +2,12 @@ package ch2;
 
 public interface TV {
 
-	void turnOn(); //추상메소드 : {} (중괄호가 없는 것)
+	public void turnOn(); //추상메소드 : {} (중괄호가 없는 것)
 
-	void turnOff();
+	public void turnOff();
 
-	void soundUp();
+	public void soundUp();
 
-	void soundDown();
+	public void soundDown();
 
 }
