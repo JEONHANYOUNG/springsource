@@ -10,17 +10,23 @@ import com.company.domain.BookDTO;
 import com.company.service.BookService;
 import com.company.service.BookServiceImpl;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class BookClient {
 	
 	private static BookService service;
 	
 	public static void main(String[] args) {
-	 ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
+		
+		log.info("main 시작");
+		
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("config.xml");
 
-	//서비스 호출
-	//BookService service = new BookServiceImpl();
-	 service = (BookService)	ctx.getBean("bookServiceImpl");
-	 menu();
+		//서비스 호출
+		//BookService service = new BookServiceImpl();
+		service = (BookService)	ctx.getBean("bookServiceImpl");
+		menu();
   }
 	
 	public static void menu() {
