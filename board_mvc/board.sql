@@ -57,32 +57,6 @@ where rn>10;
 -- 검색
 
 
--- 제목/내용/작성자 단일항목 검색
-select rn,bno,title
-from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title
-	  from spring_board
-      where title like'%Test%' and rownum <=20)
-where rn>10;
-
--- 제목 or 내용 / 제목 or 작성자 / 제목 or 내용 or 작성자 다중항목 검색
--- and와 or가 섞여있을 때 괄호를 준다.
-select rn,bno,title
-from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title
-	  from spring_board
-      where (title like'%스프링 수정%' or content like '%홍길동%') and rownum <=20)
-where rn>10;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

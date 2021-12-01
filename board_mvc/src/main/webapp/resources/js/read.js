@@ -7,7 +7,14 @@ $(function(){
 	
 	//List를 클릭하면 전체 리스트 보여주기
 	$(".btn-info").click(function(){
-		location.href="/book/list";
+		//actionForm 에서 bno는 제거
+		form.find("input[name='bno']").remove();
+		
+		//actionForm action 수정 /board/list
+		form.attr("action","/board/list");
+		
+		//actionForm 전송
+		form.submit();
 	})
 	
 	//Modify를 클릭하면 actionForm 보내기

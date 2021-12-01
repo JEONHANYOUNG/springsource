@@ -22,7 +22,6 @@ $(function(){
 			formObj.attr("action","/board/list")
 				   .attr("method","get")
 				   .find("input[name='bno']").remove();
-			
 		}
 		formObj.submit();
 	})
