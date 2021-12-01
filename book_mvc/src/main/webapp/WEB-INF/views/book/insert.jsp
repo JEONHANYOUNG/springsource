@@ -21,7 +21,7 @@
 		<label for="Price">price</label>
 		<input type="text" name="price" id="price" class="form-control" required="required" placeholder="Price"/>
 	</div>
-	<button type="submit" class="btn-btn-primary">입력</button>
-	<button type="reset" class="btn-btn-secondary">취소</button>
+	<button type="submit" class="btn btn-primary">입력</button>
+	<button type="reset" class="btn btn-secondary">취소</button>
 </form>
 <%@ include file="../includes/footer.jsp"%>

@@ -24,8 +24,18 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public boolean insertBook(BookDTO insertdto) {
+	public boolean insert(BookDTO insertdto) {
 		return mapper.insert(insertdto) > 0? true:false;
+	}
+
+	@Override
+	public boolean remove(String code) {
+		return mapper.delete(code) > 0? true:false;
+	}
+
+	@Override
+	public boolean update(BookDTO updateDto) {
+		return mapper.update(updateDto) > 0? true:false;
 	}
   
 	

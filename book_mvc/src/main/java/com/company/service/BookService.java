@@ -9,9 +9,11 @@ public interface BookService {
 	
 	public BookDTO getRow(String code);
 
-	public boolean insertBook(BookDTO dto);
+	public boolean insert(BookDTO insertdto);
 
-	//public boolean updateBook(String code, String price);
+	public boolean remove(String code);
+	
+	public boolean update(BookDTO updateDto);
 	
 	
 	
