@@ -50,8 +50,13 @@ $(function(){
 		
 	// amount 값 가져오기
 		let amount = $(this).val();		
+	
 	// 가져온 값을 actionForm에 amount 값 수정하기
 		actionForm.find("input[name='amount']").val(amount);
+	
+	//bno 제거
+		actionForm.find("input[name='bno']").remove();
+	
 	// actionForm 보내기
 		actionForm.submit();
 	})
@@ -100,6 +105,7 @@ $(function(){
 	$("#searchForm").submit();
 		
 	})
+	
 	
 	
 	

@@ -25,7 +25,7 @@ public class Criteria {
 		this.amount = amount;
 	}
 
-	public String[] getTypArr() {
+	public String[] getTypeArr() {
 		// 제목 => T => {'T'}
 		// 제목 or 내용 or 작성자 => TCW => {'T','C','W'}
 		

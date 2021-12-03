@@ -69,10 +69,11 @@ where rn>10;
 select rn,bno,title
 from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title
 	  from spring_board
-      where (title like'%스프링 수정%' or content like '%홍길동%') and rownum <=20)
+      where (title like '%스프링 수정%' or content like '%홍길동%') and rownum <=20)
 where rn>10;
 
 
+-- Mybatis 동적 태그
 
 
 
