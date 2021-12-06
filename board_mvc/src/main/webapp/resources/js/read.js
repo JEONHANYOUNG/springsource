@@ -27,7 +27,19 @@ $(function(){
 		})
 	})
 	
+	// 댓글 작업
 	
+	
+	// 댓글 삽입 - 
+	replyService.add(
+		{bno:bno,replyer:'test',reply:'댓글 작성중...'},
+			function(result){
+				if(result){
+					alert(result); // reply.js에서 result 값을 받은 값이 success이다.
+				}
+
+
+	}); // add end
 	
 })
 
