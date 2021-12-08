@@ -18,6 +18,8 @@ public interface BoardService {
 	public boolean remove(int bno);
 
 	public int getTotalCount(Criteria cri);
+	
+	
 
 
 

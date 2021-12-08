@@ -89,7 +89,7 @@ $(function(){
 						}
 						modal.find("input").val("");
 						modal.modal("hide");
-						showList(-1);
+						showList(-1); 
 					}
 			});  // add end
 	})
@@ -153,6 +153,12 @@ $(function(){
 			
 			// 수정/삭제를 위한 기본키
 			modal.data("rno",data.rno); //pk이므로 무조건 있어야 함.	
+			
+			// 작성 날짜 다시 보여주기
+			modal.find("[name='replyDate']").closest("div").show();
+			
+			// 모든 버튼 보여주기
+			modal.find("button").show();
 			
 			//등록 버튼 숨기기
 			modal.find("#modalRegisterBtn").hide();

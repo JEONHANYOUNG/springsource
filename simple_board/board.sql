@@ -107,8 +107,16 @@ from (select /*+INDEX(spring_reply idx_reply)*/rownum rn,rno,bno,reply,replyer,r
 where rn > 10;
 
 
+-- spring_board 테이블에 댓글 수를 저장할 칼럼 추가
+alter table spring_board add(replycnt number default 0);
 
+-- 이미 들어간 댓글 수 삽입하기 
+update spring_board
+set replycnt = (select count(rno)
+				from SPRING_REPLY
+				where SPRING_BOARD.bno=spring_reply.bno);
 
+select * from SPRING_BOARD where bno=1426;
 
 
 
