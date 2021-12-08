@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.company.domain.Criteria;
 import com.company.domain.ReplyDTO;
+import com.company.domain.ReplyPageDTO;
 import com.company.mapper.ReplyMapper;
 @Service
 
@@ -36,8 +38,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyDTO> getList(int bno) {
-		return replymapper.list(bno);
+	public ReplyPageDTO getList(Criteria cri, int bno) {
+		return new ReplyPageDTO(replymapper.getCountByBno(bno), replymapper.list(cri, bno));
 	}
 
 	

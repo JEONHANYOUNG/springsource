@@ -2,6 +2,9 @@ package com.company.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.company.domain.Criteria;
 import com.company.domain.ReplyDTO;
 
 public interface ReplyMapper {
@@ -14,5 +17,8 @@ public interface ReplyMapper {
 	
 	public int delete(int rno);
 
-	public List<ReplyDTO> list(int bno);
+	public List<ReplyDTO> list(@Param("cri") Criteria cri,@Param("bno") int bno);
+	
+	public int getCountByBno(int bno);
+	
 }

@@ -2,7 +2,9 @@ package com.company.service;
 
 import java.util.List;
 
+import com.company.domain.Criteria;
 import com.company.domain.ReplyDTO;
+import com.company.domain.ReplyPageDTO;
 
 public interface ReplyService {
 
@@ -14,6 +16,6 @@ public interface ReplyService {
 	
 	public boolean deleteReply(int rno);
 
-	public List<ReplyDTO> getList(int rno);
+	public ReplyPageDTO getList(Criteria cri, int rno);
 	
 }
