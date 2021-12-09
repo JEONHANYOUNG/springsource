@@ -54,10 +54,20 @@ from (select /*+INDEX_DESC(spring_board pk_spring_board)*/ rownum rn,bno,title
 where rn>10;
 
 
--- 검색
+-- 첨부파일 테이블
+create table spring_attach(
+	uuid varchar2(100) not null,
+	uploadPath varchar2(100) not null,
+	fileName varchar2(100) not null,
+	fileType char(1) default 'I',
+	bno number(10,0)
+);
 
+alter table spring_attach add constraint pk_attach primary key(uuid);
+alter table spring_attach add constraint fk_board_attach foreign key(bno)
+references spring_board(bno);
 
-
+select * from spring_attach;
 
 
 
