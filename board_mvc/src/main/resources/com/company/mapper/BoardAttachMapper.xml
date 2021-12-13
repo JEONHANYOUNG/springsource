@@ -11,5 +11,17 @@
 		select * from spring_attach where bno=#{bno} 
 	</select>
 	
+	<!-- 첨부 파일 삭제 -->
+	<delete id="deleteAll">
+		delete from spring_attach where bno=#{bno}	
+	</delete> 
+	
+	<!-- 어제 날짜 첨부파일 가져오기 -->
+	<select id="getOldFiles" resultType="com.company.domain.AttachFileDTO">
+		select * from spring_attach 
+		where uploadPath = to_char(sysdate-1,'yyyy\mm\dd')
+	</select>
+	
+	
 	
 </mapper>
