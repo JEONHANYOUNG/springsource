@@ -22,16 +22,8 @@ import com.zaxxer.hikari.HikariDataSource;
 @MapperScan("com.company.mapper")
 @Configuration
 public class RootConfig {
- 
-	/* 1. <!-- 해당 annotation이 사용된 패키지를 SCAN하는 구문이 필요하다 -->
-	   <context:component-scan
-	      base-package="com.company.service" /> => @ComponentScan("com.company.service")*/
-	
-	/* 2. <!-- mybatis 사용하는 Mapper interface, Mapper xml 활성화 -->
-	   <mybatis-spring:scan
-	      base-package="com.company.mapper" /> => @MapperScan("com.company.mapper") */
-	
-	 /* 3. <bean id="sqlSessionFactory"
+ 	
+	 /* <bean id="sqlSessionFactory"
 		      class="org.mybatis.spring.SqlSessionFactoryBean">
 		      <property name="dataSource" ref="ds"></property>
 		   </bean> */
@@ -44,7 +36,7 @@ public class RootConfig {
 	}
 	
 	
-	/* 4. <!-- DBCP(DataBaseConnectionPulling):데이터베이스 커넥션 풀링 >> HikariCP -->
+	/* <!-- DBCP(DataBaseConnectionPulling):데이터베이스 커넥션 풀링 >> HikariCP -->
 	   <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"><!--외부 객체 불러오는 방식 -->
 	      <property name="driverClassName"
 	         value="oracle.jdbc.OracleDriver" />

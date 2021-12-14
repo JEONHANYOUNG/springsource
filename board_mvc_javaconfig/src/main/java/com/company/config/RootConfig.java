@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+/* <!-- task 패키지 : @Scheduled 활성화-->
+	<task:annotation-driven/> */
 @EnableScheduling
 
 /* <!--  스프링 트랜잭션 매니저 등록 -->
@@ -24,8 +26,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 
 /* <!-- mybatis 사용하는 Mapper interface, Mapper xml 활성화 -->
-<mybatis-spring:scan
-   base-package="com.company.mapper" /> */
+	<mybatis-spring:scan base-package="com.company.mapper" /> */
 @MapperScan("com.company.mapper")
 
 /* <!-- @Autowired, @Inject, @Component, @Service, @Controller, @Repository 활성화 -->
@@ -35,26 +36,18 @@ import com.zaxxer.hikari.HikariDataSource;
 	<!-- task 패키지 : @Component 활성화-->
    	<context:component-scan base-package="com.company.task"/> */
 @ComponentScan({"com.company.service","com.company.task"})
-@Configuration
+
+@Configuration // 환경설정을 담당하는 파일임을 명시
 public class RootConfig {
 
 	/* <!-- @Transactional 활성화 -->
 	<tx:annotation-driven/> */
 	
-	@Bean
+	@Bean //인스턴스(객체)를 생성하고 스프링 컨테이너가 관리
 	   public DataSourceTransactionManager txManager() {
 	      return new DataSourceTransactionManager(dataSource());
 	   }
 		
-	/* <!-- 해당 annotation이 사용된 패키지를 SCAN하는 구문이 필요하다 -->
-	   <context:component-scan
-	      base-package="com.company.service" /> => @ComponentScan("com.company.service")
-		   <!-- task 패키지 : @Component 활성황-->
-   	   <context:component-scan base-package="com.company.task"/>
-   	    	<!-- task 패키지 : @Scheduled 활성황-->
-   	   <task:annotation-driven/>
-	
-	
 	 /* <bean id="sqlSessionFactory"
 		      class="org.mybatis.spring.SqlSessionFactoryBean">
 		      <property name="dataSource" ref="ds"></property>
