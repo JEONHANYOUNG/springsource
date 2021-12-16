@@ -47,6 +47,7 @@ public class BoardController {
 	// /board.register로 들어오는 거
 
 //들어가기 전에 검증해라
+	@PreAuthorize("isAuthenticated()") //들어가기 전에 검증해라
 	@PostMapping("/register")
 	public String registerPost(BoardDTO insertDto, RedirectAttributes rttr) {
 		log.info("register 가져오기 "+insertDto);
@@ -89,6 +90,7 @@ public class BoardController {
 	}
 	
 	// /modify/post
+	@PreAuthorize("principal.username == #modifyDto.writer")
 	@PostMapping("/modify")
 	public String modify(BoardDTO modifyDto, Criteria cri, RedirectAttributes rttr) {
 		log.info("게시글 수정 "+modifyDto+" "+cri);
@@ -109,8 +111,9 @@ public class BoardController {
 	}
 	
 	// /modify/post
+	@PreAuthorize("principal.username == #modifyDto.writer")
 	@PostMapping("/remove")
-	public String removePost(int bno, Criteria cri, RedirectAttributes rttr) {
+	public String removePost(int bno, String writer, Criteria cri, RedirectAttributes rttr) {
 		log.info("게시글 삭제 "+bno);
 		
 		//첨부 파일 목록 얻어오기

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ public class ReplyController {
 	@Autowired
 	private ReplyService service;
 	
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/new")
 	public ResponseEntity<String> create(@RequestBody ReplyDTO insertDto){
 		log.info("댓글 입력 "+insertDto);
@@ -48,6 +50,7 @@ public class ReplyController {
 	}
 	
 	//  /replies/{rno} + PUT => 수정 댓글 내용(JSON)
+	@PreAuthorize("principal.username == #updateDto.replyer")
 	@PutMapping("/{rno}")
 	public ResponseEntity<String> modify(@PathVariable int rno,@RequestBody ReplyDTO updateDto){
 		log.info("댓글 수정 "+updateDto);
@@ -61,9 +64,10 @@ public class ReplyController {
 	}
 	
 	//  /replies/{rno} + DELETE
+	@PreAuthorize("principal.username == #reply.replyer")
 	@DeleteMapping("/{rno}")
-	public ResponseEntity<String> remove(@PathVariable int rno){
-		log.info("댓글 입력 "+rno);
+	public ResponseEntity<String> remove(@PathVariable int rno,@RequestBody ReplyDTO reply){
+		log.info("댓글 삭제 "+rno);
 		
 		return service.deleteReply(rno)?
 				new ResponseEntity<String>("success",HttpStatus.OK):
